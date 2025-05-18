@@ -8,6 +8,7 @@ html {
 }
 
 body {
+    color: #444;
     padding: 0 1.5rem;
 }
 
@@ -32,23 +33,11 @@ body {
     font-optical-sizing: auto;
 }
 
-.montserrat-bold {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-}
-
-.montserrat-semibold {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-}
-
 /* Markup & Formatting */
 h1, .h1,
 h2, .h2,
 h3, .h3,
-h4, .h4 { margin: 0 0 1.2rem; }
+h4, .h4 { color: #111; margin: 0 0 1.2rem; }
 p { margin: 0 0 1.4rem; }
 p:last-child { margin-bottom: 0; }
 a { color: #5048d2; text-decoration: underline; }
@@ -61,11 +50,43 @@ li { margin-bottom: 6px; }
 hr { margin: 2.5rem 0; border: 2px solid #eee; border-radius: 2px; }
 code { background-color: #efefef; padding: 1px 6px; border-radius: 3px;}
 .text-center { text-align: center; }
-.bold { font-weight: 700; }
 .semibold { font-weight: 600; }
+.bold { font-weight: 700; }
+.extrabold { font-weight: 800; }
+.black { font-weight: 900; }
 .uppercase { text-transform: uppercase; }
 .subtle-text { color: #777; }
 .mb-0 { margin-bottom: 0; }
+.color-black { color: #000; }
+.color-white { color: #fff; }
+.dark-bg { background-color: #000 !important; color: #fff !important; }
+.gradient-2025 {
+    background: linear-gradient(135deg, #F8C03A 0%, #F63535 45%, #912EA6 100%);
+    color: #fff;
+    border-color: #F8C03A !important;
+}
+.gradient-2025.alt {
+    background: linear-gradient(135deg, #8680DD 0%, #5148D3 20%, #0B0559 80%, #030032 100%);
+    color: #fff;
+    border-color: #0B0559 !important;
+}
+
+/* Branding Colors */
+.color-swatch {
+    font-weight: bold;
+}
+
+.color-swatch p {
+    margin-bottom: 0;
+}
+
+.color-name {
+}
+
+.color-hex {
+    font-size: 13px;
+    font-weight: 600;
+}
 
 /* Flexbox */
 .flex {
@@ -84,14 +105,19 @@ main > section {
     margin-bottom: 2rem;
 }
 
-main > section > h2 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
+main > section[class*="-container"] {
+    border-bottom: 2px solid #eee;
+    padding: 2rem 0;
 }
 
-main > section > h2 + p,
-main > section > p:first-child {
-    max-width: 700px;
+main > section[class*="-container"] > h1 {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+main > section[class*="-container"] > h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
 }
 
 /* Header */
@@ -162,65 +188,68 @@ nav ul a {
 .site-copyright { margin-top: 2rem; }
 
 /* Assets */
-.asset-grid {
+.grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
 }
 
 @media all and (min-width: 520px) {
-    .asset-grid {
+    .grid {
         gap: 1.5rem;
     }
-    .asset-grid.cols-3 {
+    .grid.cols-3 {
         grid-template-columns: 1fr 1fr;
     }
-    .asset-grid.cols-4 {
+    .grid.cols-4 {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media all and (min-width: 768px) {
-    .asset-grid.cols-3 {
+    .grid.cols-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+    .grid.cols-3 {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media all and (min-width: 992px) {
-    .asset-grid.cols-4 {
+    .grid.cols-4 {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
-.asset-item {
+.grid-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 1rem 1rem .9rem;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0,0,0,.15);
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
 }
 
-.asset-item a {
+.grid-item a {
     text-decoration: none;
 }
 
-.asset-item a img {
+.grid-item a img {
     height: 54px;
     width: auto;
     vertical-align: bottom;
 }
 
-.cols-4 .asset-item a img {
+.cols-4 .grid-item a img {
     height: 72px;
 }
 
-.asset-item a p {
+.grid-item a p {
     color: #777;
     display: block;
     font-size: 12px;
@@ -228,11 +257,35 @@ nav ul a {
     margin-top: 8px;
 }
 
-.asset-item.dark-bg {
-    background-color: #222;
+.grid-item.dark-bg a p {
+    color: #aeaeae;
+}
+
+.grid-item.gradient-2025 a p {
     color: #fff;
 }
 
-.asset-item.dark-bg a p {
-    color: #aeaeae;
+.grid-item.resources {
+    align-items: normal;
+    text-align: left;
+    justify-content: start;
+}
+
+.grid-item.resources a {
+    color: #111;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.grid-item.resources a:hover {
+    text-decoration: none;
+}
+
+.resources-title {
+    gap: 8px;
+}
+
+.resource-icon {
+    height: 24px;
+    width: auto;
 }
