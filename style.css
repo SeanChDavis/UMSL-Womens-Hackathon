@@ -89,7 +89,8 @@ main > section > h2 {
     margin-bottom: 1rem;
 }
 
-main > section > h2 + p {
+main > section > h2 + p,
+main > section > p:first-child {
     max-width: 700px;
 }
 
