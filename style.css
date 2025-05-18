@@ -2,7 +2,7 @@
 @import "normalize.css";
 
 html {
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.65;
     font-family: "Montserrat", Roboto, Helvetica, Arial, sans-serif;
 }
@@ -65,6 +65,7 @@ code { background-color: #efefef; padding: 1px 6px; border-radius: 3px;}
 .semibold { font-weight: 600; }
 .uppercase { text-transform: uppercase; }
 .subtle-text { color: #777; }
+.mb-0 { margin-bottom: 0; }
 
 /* Flexbox */
 .flex {
@@ -158,3 +159,79 @@ nav ul a {
 /* Footer */
 .page-footer { padding: 2rem 0; font-size: 85%; }
 .site-copyright { margin-top: 2rem; }
+
+/* Assets */
+.asset-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media all and (min-width: 520px) {
+    .asset-grid {
+        gap: 1.5rem;
+    }
+    .asset-grid.cols-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+    .asset-grid.cols-4 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media all and (min-width: 768px) {
+    .asset-grid.cols-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media all and (min-width: 992px) {
+    .asset-grid.cols-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.asset-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 1rem .9rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+}
+
+.asset-item a {
+    text-decoration: none;
+}
+
+.asset-item a img {
+    height: 54px;
+    width: auto;
+    vertical-align: bottom;
+}
+
+.cols-4 .asset-item a img {
+    height: 72px;
+}
+
+.asset-item a p {
+    color: #777;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.asset-item.dark-bg {
+    background-color: #222;
+    color: #fff;
+}
+
+.asset-item.dark-bg a p {
+    color: #aeaeae;
+}
